@@ -1,10 +1,12 @@
 import { Globe, Rocket, Workflow } from 'lucide-react'
 import { useReveal } from '../hooks/useReveal'
 
+const BASE = import.meta.env.BASE_URL
+
 const items = [
   {
     number: '(001)',
-    image: '/imgs/whatwedo/webdesign.png',
+    image: `${BASE}imgs/whatwedo/webdesign.png`,
     Icon: Globe,
     title: 'Diseño Web',
     desc: 'Sitios modernos, responsivos y centrados en el usuario, diseñados para atraer visitantes y generar conversiones.',
@@ -12,7 +14,7 @@ const items = [
   },
   {
     number: '(002)',
-    image: '/imgs/whatwedo/mvpdevelopment.png',
+    image: `${BASE}imgs/whatwedo/mvpdevelopment.png`,
     Icon: Rocket,
     title: 'Desarrollo de MVP',
     desc: 'Aplicaciones personalizadas construidas para validar tu idea rápido y escalar con las necesidades de tu negocio.',
@@ -20,7 +22,7 @@ const items = [
   },
   {
     number: '(003)',
-    image: '/imgs/whatwedo/processautomation.png',
+    image: `${BASE}imgs/whatwedo/processautomation.png`,
     Icon: Workflow,
     title: 'Automatización de procesos',
     desc: 'Agentes de IA y flujos automatizados que simplifican tareas repetitivas y liberan tiempo de tu equipo.',

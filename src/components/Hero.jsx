@@ -1,14 +1,16 @@
 import { useReveal } from '../hooks/useReveal'
 
+const BASE = import.meta.env.BASE_URL
+
 const ORBIT_IMAGES = [
-  '/imgs/slider/Emprepedia01.png',
-  '/imgs/slider/Freelance01.png',
-  '/imgs/slider/JohannaOtranto01.png',
-  '/imgs/slider/redim01.png',
-  '/imgs/slider/sinner01.png',
-  '/imgs/slider/Viops01.png',
-  '/imgs/slider/Freelance03.png',
-  '/imgs/slider/sinner04.png',
+  `${BASE}imgs/slider/Emprepedia01.png`,
+  `${BASE}imgs/slider/Freelance01.png`,
+  `${BASE}imgs/slider/JohannaOtranto01.png`,
+  `${BASE}imgs/slider/redim01.png`,
+  `${BASE}imgs/slider/sinner01.png`,
+  `${BASE}imgs/slider/Viops01.png`,
+  `${BASE}imgs/slider/Freelance03.png`,
+  `${BASE}imgs/slider/sinner04.png`,
 ]
 
 export default function Hero() {
@@ -39,7 +41,7 @@ export default function Hero() {
         <div className="hero-center">
           <img
             className="hero-logo"
-            src="/logo header.svg"
+            src={`${BASE}logo header.svg`}
             alt="Ovus"
           />
           <div className="hero-text">

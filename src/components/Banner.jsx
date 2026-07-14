@@ -6,7 +6,7 @@ export default function Banner() {
   return (
     <div id="banner" className="banner reveal" ref={ref}>
       <div className="banner-img">
-        <img src="/imgs/banner.png" alt="Banner" />
+        <img src={`${import.meta.env.BASE_URL}imgs/banner.png`} alt="Banner" />
       </div>
     </div>
   )

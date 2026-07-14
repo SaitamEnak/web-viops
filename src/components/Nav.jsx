@@ -29,7 +29,7 @@ export default function Nav({ isDark, toggleTheme }) {
 
   return (
     <nav className="top-nav">
-      <img className="nav-logo" src="/logo header.svg" alt="Ovus" />
+      <img className="nav-logo" src={`${import.meta.env.BASE_URL}logo header.svg`} alt="Ovus" />
 
       <div className={`nav-pill nav-center${isOpen ? ' open' : ''}`}>
         <a href="#services" className="nav-link" onClick={(e) => handleNavClick(e, 'services')}>Servicios</a>
