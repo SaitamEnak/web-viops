@@ -495,38 +495,48 @@ body {
 
 .service-row {
     display: grid;
-    grid-template-columns: 140px minmax(180px, 1fr) minmax(200px, 260px);
-    column-gap: 20px;
-    align-items: center;
-    padding: 28px 8px;
+    grid-template-columns: 60px 1fr 240px;
+    grid-template-rows: auto auto;
+    column-gap: 28px;
+    row-gap: 24px;
+    padding: 48px 0;
     border-bottom: 1px solid var(--border-light);
+    align-items: start;
 }
 
-.service-number {
+.service-name {
     font-family: 'Figtree', sans-serif;
     font-weight: 400;
     font-size: 15px;
-    letter-spacing: -0.01em;
     color: var(--text-secondary);
     opacity: 0.7;
-    margin-bottom: 2px;
+    line-height: 1;
+    padding-top: 2px;
+    grid-column: 1;
+    grid-row: 1;
 }
 
-.service-thumb {
+.service-info-title {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--text-primary);
+    letter-spacing: -0.2px;
+    line-height: 1.2;
+}
+
+.service-image-wrap {
     position: relative;
-    width: 140px;
-    height: 105px;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    background: var(--border-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    aspect-ratio: 16 / 10;
+    background: var(--placeholder-bg);
+    flex-shrink: 0;
+    grid-column: 2;
+    grid-row: 1;
 }
 
-.service-thumb-bg {
-    position: absolute;
-    inset: 0;
+.service-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -534,40 +544,74 @@ body {
 }
 
 .service-thumb-icon {
-    position: relative;
-    z-index: 1;
-    color: #fff;
-    display: inline-flex;
+    position: absolute;
+    inset: 0;
+    display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
 }
 
-.service-cats {
+.service-info {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 16px;
+    grid-column: 3;
+    grid-row: 1;
 }
 
-.service-cats-label {
+.service-desc {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    font-size: 16px;
+    letter-spacing: -0.16px;
+}
+
+.service-meta {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border-light);
+}
+
+.service-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.service-meta-label {
     font-family: 'Figtree', sans-serif;
     font-weight: 400;
     font-size: 13px;
     color: var(--text-secondary);
     opacity: 0.75;
-    margin: 0;
 }
 
-.service-cats-list {
+.service-meta-value {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+.service-pills-row {
     display: flex;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
+    grid-column: 2 / span 2;
+    grid-row: 2;
 }
 
 .service-pill {
     display: inline-flex;
     align-items: center;
-    padding: 6px 12px;
+    padding: 8px 16px;
     border-radius: 999px;
     background: var(--text-primary);
     color: var(--bg-color);
@@ -577,49 +621,6 @@ body {
     line-height: 1;
     letter-spacing: -0.01em;
     white-space: nowrap;
-}
-
-.service-pill-more {
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-light);
-}
-
-
-.service-text {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-    justify-content: center;
-    position: relative;
-    flex-shrink: 0;
-    width: 100%;
-}
-
-.service-title {
-    font-family: 'Figtree', sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
-    position: relative;
-    flex-shrink: 0;
-    color: var(--text-primary);
-    font-size: 18px;
-    letter-spacing: -0.18px;
-    width: 100%;
-}
-
-.service-desc {
-    font-family: 'Figtree', sans-serif;
-    font-weight: 300;
-    line-height: 1.4;
-    font-style: normal;
-    position: relative;
-    flex-shrink: 0;
-    color: var(--text-secondary);
-    font-size: 16px;
-    letter-spacing: -0.16px;
-    width: 100%;
 }
 
 /* Resources / Lead Magnet */
@@ -1609,14 +1610,8 @@ body {
     }
 
     .service-row {
-        grid-template-columns: 120px minmax(160px, 1fr) minmax(180px, 220px);
-        column-gap: 16px;
-        padding: 24px 4px;
-    }
-
-    .service-thumb {
-        width: 120px;
-        height: 90px;
+        grid-template-columns: 90px 1fr 200px;
+        column-gap: 20px;
     }
 
     .resources-card {
@@ -1807,19 +1802,22 @@ body {
 
     .service-row {
         grid-template-columns: 1fr;
+        grid-template-rows: auto;
         row-gap: 16px;
-        padding: 24px 0;
-        align-items: start;
+        padding: 32px 0;
     }
 
-    .service-row > .service-thumb {
-        width: 100%;
-        height: 180px;
+    .service-name,
+    .service-image-wrap,
+    .service-info,
+    .service-pills-row {
+        grid-column: 1;
+        grid-row: auto;
     }
 
     .service-pill {
         font-size: 12px;
-        padding: 5px 10px;
+        padding: 6px 12px;
     }
 
     .work-item {
