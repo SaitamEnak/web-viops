@@ -1584,7 +1584,7 @@ body {
         --ring: min(135vw, 720px);
         --img-w: min(15vw, 96px);
         --radius-ratio: 0.42;
-        margin-top: -80px;
+        margin-top: -100px;
     }
 
     .hero-center {
@@ -1705,7 +1705,7 @@ body {
         --ring: min(140vw, 600px);
         --img-w: min(16vw, 80px);
         --radius-ratio: 0.42;
-        margin-top: -80px;
+        margin-top: -100px;
     }
 
     .hero-center {
@@ -1768,7 +1768,7 @@ body {
         --ring: min(145vw, 500px);
         --img-w: min(17vw, 68px);
         --radius-ratio: 0.42;
-        margin-top: -80px;
+        margin-top: -100px;
     }
 
     .hero-center {
