@@ -5,7 +5,6 @@ import Services from './components/Services'
 import Resources from './components/Resources'
 import Mission from './components/Mission'
 import Quote from './components/Quote'
-import Banner from './components/Banner'
 import WorkWith from './components/WorkWith'
 import FAQs from './components/FAQs'
 import Contact from './components/Contact'
@@ -27,10 +26,9 @@ function App() {
         <Resources />
         {/* <Mission /> */}
         <Quote />
-        <Banner />
         <WorkWith />
-        <FAQs />
         <Contact />
+        <FAQs />
       </div>
     </>
   )

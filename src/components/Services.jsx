@@ -47,7 +47,6 @@ export default function Services() {
       <ul className="services-list">
         {items.map(({ number, image, Icon, title, desc, categories }) => (
           <li className="service-row" key={number}>
-            <span className="service-number">{number}</span>
             <div className="service-thumb">
               <img src={image} alt={title} className="service-thumb-bg" />
               <div className="service-thumb-icon">
@@ -55,11 +54,11 @@ export default function Services() {
               </div>
             </div>
             <div className="service-text">
+              <span className="service-number">{number}</span>
               <p className="service-title">{title}</p>
               <p className="service-desc">{desc}</p>
             </div>
             <div className="service-cats">
-              <p className="service-cats-label">Casos de uso</p>
               <div className="service-cats-list">
                 {categories.map((c) => (
                   <span className="service-pill" key={c}>{c}</span>

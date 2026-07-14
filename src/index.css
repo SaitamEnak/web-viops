@@ -63,7 +63,7 @@ body {
 
 /* Theme Variables */
 :root {
-    --bg-color: #e3e3e3;
+    --bg-color: #d4d4d4;
     --text-primary: #252525;
     --text-secondary: #3d3d3d;
     --text-quote: #313131;
@@ -82,10 +82,10 @@ body {
 
 .dark {
     --bg-color: #1a1a1a;
-    --text-primary: #f0f0f0;
-    --text-secondary: #cccccc;
-    --text-quote: #e0e0e0;
-    --text-contact: #cccccc;
+    --text-primary: #d8d8d8;
+    --text-secondary: #a8a8a8;
+    --text-quote: #c4c4c4;
+    --text-contact: #a8a8a8;
     --border-light: #555555;
     --border-dark: #777777;
     --button-bg: #f0f0f0;
@@ -495,7 +495,7 @@ body {
 
 .service-row {
     display: grid;
-    grid-template-columns: 56px 96px minmax(180px, 1fr) minmax(200px, 260px);
+    grid-template-columns: 140px minmax(180px, 1fr) minmax(200px, 260px);
     column-gap: 20px;
     align-items: center;
     padding: 28px 8px;
@@ -509,12 +509,13 @@ body {
     letter-spacing: -0.01em;
     color: var(--text-secondary);
     opacity: 0.7;
+    margin-bottom: 2px;
 }
 
 .service-thumb {
     position: relative;
-    width: 96px;
-    height: 72px;
+    width: 140px;
+    height: 105px;
     border-radius: 12px;
     overflow: hidden;
     background: var(--border-light);
@@ -1202,51 +1203,246 @@ body {
     padding-bottom: 16px;
 }
 
-/* Contact */
-.contact {
+/* Quote Form (Contact) */
+.quote-form-section {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 32px;
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 1440px;
+    background: #131313;
+    border-radius: 32px;
+    margin: 40px 0;
+}
+
+.quote-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    width: 100%;
+    align-items: stretch;
+}
+
+.quote-form-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    height: 100%;
+    padding: 48px;
+}
+
+.quote-form-title {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 400;
+    font-size: 52px;
+    line-height: 1.05;
+    letter-spacing: -1.4px;
+    color: #f2f2f2;
+    margin: 0 0 6px;
+    max-width: 460px;
+}
+
+.quote-form-lead {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.35;
+    letter-spacing: -0.4px;
+    color: #b5b5b5;
+    max-width: 460px;
+}
+
+.quote-form-testimonial {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 460px;
+}
+
+.quote-form-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(120% 120% at 30% 20%, #d24a3a 0%, #7a2216 100%);
+    color: #fff;
     font-family: 'Figtree', sans-serif;
     font-weight: 700;
-    gap: 21px;
+    font-size: 22px;
+    margin-bottom: 4px;
+    user-select: none;
+}
+
+.quote-form-quote {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.45;
+    color: #f2f2f2;
+    letter-spacing: -0.16px;
+}
+
+.quote-form-author {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    color: #f2f2f2;
+    margin-top: 4px;
+}
+
+.quote-form-role {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: #a8a8a8;
+}
+
+.quote-form-card {
+    background: #f2f2f2;
+    border: 1px solid #e2e2e2;
+    border-radius: 20px;
+    padding: 32px;
+    color: #171717;
+}
+
+.quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.qf-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.qf-label {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+}
+
+.qf-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.quote-form input,
+.quote-form textarea {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #1a1a1a;
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    width: 100%;
+    letter-spacing: -0.1px;
+}
+
+.quote-form textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.5;
+}
+
+.quote-form input::placeholder,
+.quote-form textarea::placeholder {
+    color: #9a9a9a;
+}
+
+.quote-form input:focus,
+.quote-form textarea:focus {
+    border-color: #1a1a1a;
+    background: #ffffff;
+}
+
+.qf-disclaimer {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #6a6a6a;
+    letter-spacing: -0.1px;
+    margin-top: 4px;
+}
+
+.qf-cta {
+    background: #171717;
+    color: #f5f5f5;
+    border: none;
+    border-radius: 9999px;
+    padding: 16px 24px;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.qf-cta:hover {
+    background: #000;
+}
+
+.qf-cta:active {
+    transform: translateY(1px);
+}
+
+.quote-form-success {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 120px 0 0 0;
-    position: relative;
-    flex-shrink: 0;
     text-align: center;
-    width: 100%;
-    min-height: 200px;
-    overflow: hidden;
+    gap: 12px;
+    padding: 32px 8px;
 }
 
-.contact-email {
-    position: relative;
-    flex-shrink: 0;
-    color: var(--text-contact);
-    font-size: clamp(36px, 11.5vw, 164px);
-    letter-spacing: -0.01em;
-    line-height: 1;
-    width: 100%;
-    max-width: 1464.392px;
-    word-break: break-word;
+.quote-form-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+    color: #fff;
+    margin-bottom: 8px;
 }
 
-.contact-bg {
-    position: absolute;
-    background: linear-gradient(to bottom, var(--contact-bg-start), var(--contact-bg-end));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    opacity: 0.25;
-    font-size: clamp(42px, 11.2vw, 161px);
-    letter-spacing: -0.01em;
-    line-height: 1;
-    left: 50%;
-    top: calc(100% - 0.55em);
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 1202px;
-    pointer-events: none;
+.quote-form-success-title {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #171717;
+    letter-spacing: -0.24px;
+}
+
+.quote-form-success-desc {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #6a6a6a;
+    line-height: 1.5;
+    max-width: 380px;
 }
 
 /* Top Nav */
@@ -1413,14 +1609,14 @@ body {
     }
 
     .service-row {
-        grid-template-columns: 40px 80px minmax(160px, 1fr) minmax(180px, 220px);
+        grid-template-columns: 120px minmax(160px, 1fr) minmax(180px, 220px);
         column-gap: 16px;
         padding: 24px 4px;
     }
 
     .service-thumb {
-        width: 80px;
-        height: 60px;
+        width: 120px;
+        height: 90px;
     }
 
     .resources-card {
@@ -1616,10 +1812,6 @@ body {
         align-items: start;
     }
 
-    .service-row > .service-number {
-        margin-bottom: -4px;
-    }
-
     .service-row > .service-thumb {
         width: 100%;
         height: 180px;
@@ -1667,8 +1859,32 @@ body {
         width: 100%;
     }
 
-    .contact {
-        padding: 60px 0 0;
+    .quote-form-section {
+        padding: 60px 0;
+    }
+
+    .quote-form-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .quote-form-left {
+        gap: 40px;
+        min-height: 0;
+        padding: 0;
+    }
+
+    .quote-form-title {
+        font-size: 42px;
+        letter-spacing: -1px;
+    }
+
+    .quote-form-lead {
+        font-size: 18px;
+    }
+
+    .quote-form-card {
+        padding: 24px;
     }
 
     .banner-img {
@@ -1754,8 +1970,26 @@ body {
         padding: 60px 0;
     }
 
-    .contact {
-        padding: 40px 0 0;
+    .quote-form-section {
+        padding: 40px 0;
+    }
+
+    .quote-form-title {
+        font-size: 34px;
+        letter-spacing: -0.8px;
+    }
+
+    .quote-form-lead {
+        font-size: 17px;
+    }
+
+    .quote-form-card {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .qf-row-2 {
+        grid-template-columns: 1fr;
     }
 }
 

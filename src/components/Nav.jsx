@@ -34,8 +34,8 @@ export default function Nav({ isDark, toggleTheme }) {
       <div className={`nav-pill nav-center${isOpen ? ' open' : ''}`}>
         <a href="#services" className="nav-link" onClick={(e) => handleNavClick(e, 'services')}>Servicios</a>
         <a href="#quote" className="nav-link" onClick={(e) => handleNavClick(e, 'quote')}>Nosotros</a>
-        <a href="#faqs" className="nav-link" onClick={(e) => handleNavClick(e, 'faqs')}>FAQs</a>
         <a href="#contact" className="nav-link" onClick={(e) => handleNavClick(e, 'contact')}>Contacto</a>
+        <a href="#faqs" className="nav-link" onClick={(e) => handleNavClick(e, 'faqs')}>FAQs</a>
       </div>
 
       <div className="nav-pill nav-right">
