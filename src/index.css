@@ -259,9 +259,12 @@ body {
 
 /* Orbit */
 .orbit-scene {
+    --ring: 1100px;
+    --img-w: 120px;
+    --radius-ratio: 0.386;
     position: relative;
-    width: 1100px;
-    height: 1100px;
+    width: var(--ring);
+    height: var(--ring);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -285,10 +288,10 @@ body {
 
 .orbit-img {
     position: absolute;
-    width: 120px;
-    height: 150px;
-    left: 365px;
-    top: -75px;
+    width: var(--img-w);
+    height: calc(var(--img-w) * 1.25);
+    left: calc(var(--ring) * var(--radius-ratio) - var(--img-w) / 2);
+    top: calc(var(--img-w) * -0.625);
     object-fit: cover;
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
@@ -1397,16 +1400,10 @@ body {
 
 @media (min-width: 1025px) and (max-width: 1200px) {
     .orbit-scene {
-        width: 900px;
-        height: 900px;
+        --ring: 900px;
+        --img-w: 108px;
+        --radius-ratio: 0.389;
         margin-top: -60px;
-    }
-
-    .orbit-img {
-        width: 108px;
-        height: 135px;
-        left: 296px;
-        top: -67px;
     }
 }
 
@@ -1436,15 +1433,9 @@ body {
     }
 
     .orbit-scene {
-        width: 700px;
-        height: 700px;
-    }
-
-    .orbit-img {
-        width: 100px;
-        height: 125px;
-        left: 232px;
-        top: -62px;
+        --ring: 700px;
+        --img-w: 100px;
+        --radius-ratio: 0.403;
     }
 
     .hero-title {
@@ -1590,19 +1581,14 @@ body {
     }
 
     .orbit-scene {
-        width: 500px;
-        height: 500px;
-    }
-
-    .orbit-img {
-        width: 80px;
-        height: 100px;
-        left: 170px;
-        top: -50px;
+        --ring: min(135vw, 720px);
+        --img-w: min(15vw, 96px);
+        --radius-ratio: 0.42;
+        margin-top: -80px;
     }
 
     .hero-center {
-        max-width: 320px;
+        max-width: 340px;
     }
 
     .hero-title {
@@ -1716,19 +1702,14 @@ body {
     }
 
     .orbit-scene {
-        width: 360px;
-        height: 360px;
-    }
-
-    .orbit-img {
-        width: 60px;
-        height: 75px;
-        left: 113px;
-        top: -37px;
+        --ring: min(140vw, 600px);
+        --img-w: min(16vw, 80px);
+        --radius-ratio: 0.42;
+        margin-top: -80px;
     }
 
     .hero-center {
-        max-width: 240px;
+        max-width: 280px;
     }
 
     .hero-title {
@@ -1784,19 +1765,14 @@ body {
     }
 
     .orbit-scene {
-        width: 300px;
-        height: 300px;
-    }
-
-    .orbit-img {
-        width: 52px;
-        height: 65px;
-        left: 95px;
-        top: -32px;
+        --ring: min(145vw, 500px);
+        --img-w: min(17vw, 68px);
+        --radius-ratio: 0.42;
+        margin-top: -80px;
     }
 
     .hero-center {
-        max-width: 220px;
+        max-width: 240px;
     }
 
     .hero-title {
