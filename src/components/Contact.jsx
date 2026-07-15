@@ -30,7 +30,9 @@ export default function Contact() {
             </p>
           </div>
           <div className="quote-form-testimonial">
-            <div className="quote-form-avatar" aria-hidden="true">M</div>
+            <div className="quote-form-avatar">
+              <img src={`${import.meta.env.BASE_URL}imgs/avatar-mati.png`} alt="Mati" />
+            </div>
             <p className="quote-form-quote">
               “Su capacidad para escuchar, desafiar supuestos y traducir ideas en un sistema digital claro hizo una diferencia real para nuestra marca.”
             </p>

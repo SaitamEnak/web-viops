@@ -9,7 +9,7 @@ export default function WorkWith() {
       <div className="work-header">
         <p className="work-title">¿Con quién trabajamos?</p>
         <p className="work-subtitle">
-          Trabajamos con personas que entienden el valor estratégico del diseño, tratándolo como una herramienta de crecimiento y una inversión a largo plazo, no como decoración o algo secundario.
+          Trabajamos con quienes entienden que un buen producto digital no es un gasto, es una ventaja competitiva.
         </p>
       </div>
       <div className="work-grid">

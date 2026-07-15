@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Services from './components/Services'
+import AiVsHuman from './components/AiVsHuman'
 import Resources from './components/Resources'
 import Mission from './components/Mission'
 import Quote from './components/Quote'
@@ -22,10 +23,11 @@ function App() {
       <Nav isDark={isDark} toggleTheme={() => setIsDark(d => !d)} />
       <div className="desktop">
         <Hero />
-        <Services />
-        <Resources />
-        {/* <Mission /> */}
         <Quote />
+        <Resources />
+        <Services />
+        <AiVsHuman />
+        {/* <Mission /> */}
         <WorkWith />
         <Contact />
         <FAQs />

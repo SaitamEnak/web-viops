@@ -12,8 +12,8 @@ export default function Mission() {
           </div>
           <h2 className="mission-title">Construido para mejorar,<br />no solo para lanzar.</h2>
           <p className="mission-desc">
-            No seguimos procesos rígidos. Trabajamos con un método flexible diseñado para movernos rápido, lanzar pronto y mejorar continuamente. Porque un sitio web o producto nunca se "hace" una sola vez.<br /><br />
-            Se construye, se prueba, se mide y se refina con el tiempo. Por eso trabajamos con personas que ven el diseño como una inversión, no como decoración.
+            Somos un pequeño equipo de diseñadores y desarrolladores apasionados por crear soluciones digitales centradas en el usuario.<br /><br />
+            Ya sea un sitio web audaz o una interfaz de app detallada, estamos acá para hacer brillar tus ideas.
           </p>
         </div>
         <div className="mission-footer">

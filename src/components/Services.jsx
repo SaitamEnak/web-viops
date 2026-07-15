@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Globe, Rocket, Workflow } from 'lucide-react'
 import { useReveal } from '../hooks/useReveal'
 
@@ -5,6 +6,7 @@ const BASE = import.meta.env.BASE_URL
 
 const items = [
   {
+    id: 'web',
     number: '(001)',
     image: `${BASE}imgs/whatwedo/webdesign.png`,
     Icon: Globe,
@@ -12,9 +14,10 @@ const items = [
     desc: 'Diseñamos sitios web visualmente atractivos y centrados en el usuario, combinando creatividad con funcionalidad desde cero.',
     price: '$250k ARS',
     timeline: '2 – 4 Semanas',
-    categories: ['Landing pages', 'E-commerce', 'Corporativos', 'Ventas', 'Portafolios'],
+    categories: ['Landing pages', 'E-commerce', 'Shopify', 'Corporativos', 'Ventas', 'Portafolios'],
   },
   {
+    id: 'apps',
     number: '(002)',
     image: `${BASE}imgs/whatwedo/mvpdevelopment.png`,
     Icon: Rocket,
@@ -25,10 +28,11 @@ const items = [
     categories: ['Marketplaces', 'SaaS', 'Reservas', 'Delivery', 'Gestión'],
   },
   {
+    id: 'auto',
     number: '(003)',
     image: `${BASE}imgs/whatwedo/processautomation.png`,
     Icon: Workflow,
-    title: 'Automatización',
+    title: 'Automatizaciones',
     desc: 'Agentes de IA y flujos automatizados que simplifican tareas repetitivas y liberan tiempo de tu equipo.',
     price: '$650k ARS',
     timeline: '2 – 4 Semanas',
@@ -38,6 +42,12 @@ const items = [
 
 export default function Services() {
   const ref = useReveal()
+  const [activeId, setActiveId] = useState(items[0].id)
+  const activeIndex = Math.max(0, items.findIndex((i) => i.id === activeId))
+  const active = items[activeIndex]
+  const { image, Icon, title, desc, price, timeline, categories } = active
+  const currentIndex = String(activeIndex + 1).padStart(2, '0')
+  const totalCount = String(items.length).padStart(2, '0')
 
   return (
     <div id="services" className="services reveal" ref={ref}>
@@ -50,38 +60,69 @@ export default function Services() {
           Ayudamos a las marcas a lanzarse rápido, validar ideas y evolucionar sus productos a lo largo del tiempo mediante diseño, iteración y mejora continua.
         </p>
       </div>
-      <ul className="services-list">
-        {items.map(({ number, image, Icon, title, desc, price, timeline, categories }) => (
-          <li className="service-row" key={title}>
-            <span className="service-name">{number}</span>
+
+      <div className="services-card">
+        <div className="services-tabs" role="tablist" aria-label="Servicios">
+          {items.map(({ id, title, Icon: TabIcon }) => {
+            const isActive = id === activeId
+            return (
+              <button
+                key={id}
+                role="tab"
+                aria-selected={isActive}
+                className={`services-tab${isActive ? ' active' : ''}`}
+                onClick={() => setActiveId(id)}
+              >
+                <TabIcon size={16} />
+                <span>{title}</span>
+              </button>
+            )
+          })}
+        </div>
+
+        <div className="service-panel" role="tabpanel" key={activeId}>
+          <h3 className="service-lead-title" lang="es">{title}</h3>
+
+          <div className="service-col service-col-lead">
+            <p className="service-lead-desc">{desc}</p>
+            <div className="service-lead-bottom">
+              <div className="service-lead-divider" />
+              <div className="service-index">
+                <span>{currentIndex}</span>
+                <span className="service-index-total"> / {totalCount}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="service-col service-col-thumb">
             <div className="service-image-wrap">
               <img src={image} alt={title} className="service-image" />
               <div className="service-thumb-icon">
                 <Icon size={28} />
               </div>
             </div>
-            <div className="service-info">
-              <p className="service-info-title">{title}</p>
-              <p className="service-desc">{desc}</p>
-              <div className="service-meta">
-                <div className="service-meta-row">
-                  <span className="service-meta-label">Precio desde</span>
-                  <span className="service-meta-value">{price}</span>
-                </div>
-                <div className="service-meta-row">
-                  <span className="service-meta-label">Duración</span>
-                  <span className="service-meta-value">{timeline}</span>
-                </div>
-              </div>
+          </div>
+
+          <div className="service-col service-col-meta">
+            <div className="service-meta-block">
+              <span className="service-meta-label">Precio desde</span>
+              <span className="service-meta-value">{price}</span>
             </div>
-            <div className="service-pills-row">
-              {categories.map((c) => (
-                <span className="service-pill" key={c}>{c}</span>
-              ))}
+            <div className="service-meta-block">
+              <span className="service-meta-label">Duración</span>
+              <span className="service-meta-value">{timeline}</span>
             </div>
-          </li>
-        ))}
-      </ul>
+            <div className="service-meta-block">
+              <span className="service-meta-label">Servicios</span>
+              <ul className="service-meta-list">
+                {categories.map((c) => (
+                  <li key={c}>{c}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
