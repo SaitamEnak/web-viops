@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Globe, Rocket, Workflow } from 'lucide-react'
 import { useReveal } from '../hooks/useReveal'
 
@@ -49,6 +49,30 @@ export default function Services() {
   const currentIndex = String(activeIndex + 1).padStart(2, '0')
   const totalCount = String(items.length).padStart(2, '0')
 
+  const tabsRef = useRef(null)
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 })
+
+  const measureIndicator = () => {
+    const container = tabsRef.current
+    if (!container) return
+    const btn = container.querySelector('.services-tab.active')
+    if (!btn) return
+    setIndicatorStyle({
+      left: btn.offsetLeft,
+      width: btn.offsetWidth,
+      opacity: 1,
+    })
+  }
+
+  useLayoutEffect(() => {
+    measureIndicator()
+  }, [activeId])
+
+  useEffect(() => {
+    window.addEventListener('resize', measureIndicator)
+    return () => window.removeEventListener('resize', measureIndicator)
+  }, [])
+
   return (
     <div id="services" className="services reveal" ref={ref}>
       <div className="services-header">
@@ -62,7 +86,8 @@ export default function Services() {
       </div>
 
       <div className="services-card">
-        <div className="services-tabs" role="tablist" aria-label="Servicios">
+        <div className="services-tabs" role="tablist" aria-label="Servicios" ref={tabsRef}>
+          <span className="services-tab-indicator" style={indicatorStyle} aria-hidden="true" />
           {items.map(({ id, title, Icon: TabIcon }) => {
             const isActive = id === activeId
             return (
@@ -104,13 +129,15 @@ export default function Services() {
           </div>
 
           <div className="service-col service-col-meta">
-            <div className="service-meta-block">
-              <span className="service-meta-label">Precio desde</span>
-              <span className="service-meta-value">{price}</span>
-            </div>
-            <div className="service-meta-block">
-              <span className="service-meta-label">Duración</span>
-              <span className="service-meta-value">{timeline}</span>
+            <div className="service-meta-pair">
+              <div className="service-meta-block">
+                <span className="service-meta-label">Precio desde</span>
+                <span className="service-meta-value">{price}</span>
+              </div>
+              <div className="service-meta-block">
+                <span className="service-meta-label">Duración</span>
+                <span className="service-meta-value">{timeline}</span>
+              </div>
             </div>
             <div className="service-meta-block">
               <span className="service-meta-label">Servicios</span>

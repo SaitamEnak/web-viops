@@ -20,7 +20,7 @@ const svgPlaceholder = (label, bg, fg) =>
     </svg>`
   )}`
 
-const FALLBACK_AI = svgPlaceholder('Web hecha con IA', '#1a1a1c', '#8f8f95')
+const FALLBACK_AI = svgPlaceholder('Web hecha con IA', '#1a1a1c', '#b0b0b6')
 const FALLBACK_HUMAN = svgPlaceholder('Diseñada por Viops', '#f4f4f5', '#111114')
 
 const handleImgError = (fallback) => (e) => {
