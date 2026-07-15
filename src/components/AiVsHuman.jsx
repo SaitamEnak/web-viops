@@ -69,12 +69,12 @@ export default function AiVsHuman() {
 
   return (
     <div id="ai-vs-human" className="aivh reveal" ref={ref}>
-      <div className="aivh-header">
+      <div className="section-header">
         <div className="badge">
           <p>El resultado</p>
         </div>
-        <h2 className="aivh-title">Velocidad de IA.<br />Detalle humano.</h2>
-        <p className="aivh-subtitle">
+        <h2 className="section-title">Velocidad de IA.<br />Detalle humano.</h2>
+        <p className="section-subtitle">
           Uno cumple. El otro emociona.<br />
           Porque tu marca merece algo que se sienta, no solo algo que funcione.
         </p>

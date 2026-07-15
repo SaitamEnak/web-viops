@@ -136,12 +136,12 @@ export default function Services() {
 
   return (
     <div id="services" className="services reveal" ref={ref}>
-      <div className="services-header">
+      <div className="section-header">
         <div className="badge">
           <p>Nuestros Servicios</p>
         </div>
-        <p className="services-title">¿Qué hacemos?</p>
-        <p className="services-subtitle">
+        <h2 className="section-title">¿Qué hacemos?</h2>
+        <p className="section-subtitle">
           Ayudamos a las marcas a lanzarse rápido, validar ideas y evolucionar sus productos a lo largo del tiempo mediante diseño, iteración y mejora continua.
         </p>
       </div>

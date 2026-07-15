@@ -5,7 +5,7 @@ export default function Quote() {
 
   return (
     <div id="quote" className="quote reveal" ref={ref}>
-      <div className="badge quote-badge">
+      <div className="badge">
         <p>Sobre nosotros</p>
       </div>
       <h2 className="quote-lead">

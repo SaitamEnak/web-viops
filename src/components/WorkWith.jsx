@@ -6,9 +6,12 @@ export default function WorkWith() {
 
   return (
     <div id="work" className="work-with reveal" ref={ref}>
-      <div className="work-header">
-        <p className="work-title">¿Con quién trabajamos?</p>
-        <p className="work-subtitle">
+      <div className="section-header">
+        <div className="badge">
+          <p>Nuestros clientes</p>
+        </div>
+        <h2 className="section-title">¿Con quién trabajamos?</h2>
+        <p className="section-subtitle">
           Trabajamos con quienes entienden que un buen producto digital no es un gasto, es una ventaja competitiva.
         </p>
       </div>

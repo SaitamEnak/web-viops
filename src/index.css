@@ -431,20 +431,8 @@ body {
 }
 
 
-/* Services */
-.services {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    align-items: center;
-    padding: 80px 0;
-    position: relative;
-    flex-shrink: 0;
-    width: 100%;
-    max-width: 1440px;
-}
-
-.services-header {
+/* Shared section header (badge + title + subtitle) */
+.section-header {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -456,31 +444,42 @@ body {
     max-width: 882px;
 }
 
-.services-title {
+.section-title {
     font-family: 'Figtree', sans-serif;
     font-weight: 500;
     line-height: 1;
-    position: relative;
-    flex-shrink: 0;
     color: var(--text-primary);
     font-size: 48px;
     letter-spacing: -0.48px;
+    margin: 0;
     width: 100%;
     max-width: 732px;
 }
 
-.services-subtitle {
+.section-subtitle {
     font-family: 'Figtree', sans-serif;
     font-weight: 300;
     line-height: 1.4;
-    font-style: normal;
-    position: relative;
-    flex-shrink: 0;
     color: var(--text-secondary);
     font-size: 18px;
     letter-spacing: -0.18px;
+    margin: 0;
     width: 100%;
-    max-width: 437px;
+    max-width: 560px;
+    text-wrap: balance;
+}
+
+/* Services */
+.services {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    padding: 80px 0;
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 1440px;
 }
 
 .services-list {
@@ -1135,14 +1134,6 @@ body {
     max-width: 1440px;
 }
 
-.quote-badge p {
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
 .quote .quote-lead {
     font-family: 'Figtree', sans-serif;
     font-weight: 500;
@@ -1226,46 +1217,6 @@ body {
     flex-shrink: 0;
     width: 100%;
     max-width: 1440px;
-}
-
-.work-header {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    flex-shrink: 0;
-    width: 100%;
-    max-width: 882px;
-}
-
-.work-title {
-    font-family: 'Figtree', sans-serif;
-    font-weight: 500;
-    line-height: 1;
-    position: relative;
-    flex-shrink: 0;
-    color: var(--text-primary);
-    font-size: 48px;
-    letter-spacing: -0.48px;
-    width: 100%;
-    max-width: 732px;
-}
-
-.work-subtitle {
-    font-family: 'Figtree', sans-serif;
-    font-weight: 300;
-    line-height: 1.4;
-    font-style: normal;
-    position: relative;
-    flex-shrink: 0;
-    color: var(--text-secondary);
-    font-size: 18px;
-    letter-spacing: -0.18px;
-    width: 100%;
-    max-width: 438px;
-    text-wrap: balance;
 }
 
 .work-grid {
@@ -1488,7 +1439,7 @@ body {
     position: relative;
     flex-shrink: 0;
     width: 100%;
-    max-width: 1440px;
+    max-width: 1100px;
     background: radial-gradient(circle at 20% 0%, #1a1a1a 0%, #0a0a0a 60%);
     border-radius: 32px;
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
@@ -2017,11 +1968,11 @@ body {
         padding: 80px 0;
     }
 
-    .services-title, .work-title, .resources-title {
-        font-size: 36px;
+    .section-title, .resources-title {
+        font-size: 40px;
     }
 
-    .services-subtitle, .work-subtitle, .resources-subtitle {
+    .section-subtitle, .resources-subtitle {
         font-size: 16px;
     }
 
@@ -2060,6 +2011,10 @@ body {
         padding: 90px 16px 0;
     }
 
+    .section-title, .resources-title {
+        font-size: 34px;
+    }
+
     .resources-card {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -2081,7 +2036,10 @@ body {
     }
 
     .resources-input {
-        padding: 8px 12px;
+        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 0.5px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
     }
 
     .resources-submit {
@@ -2432,7 +2390,11 @@ body {
         padding: 60px 0;
     }
 
-    .services-title, .work-title, .faqs-title {
+    .section-title {
+        font-size: 30px;
+    }
+
+    .faqs-title {
         font-size: 24px;
     }
 
@@ -2505,7 +2467,11 @@ body {
         font-size: 24px;
     }
 
-    .services-title, .work-title, .faqs-title {
+    .section-title {
+        font-size: 26px;
+    }
+
+    .faqs-title {
         font-size: 22px;
     }
 
@@ -2529,37 +2495,6 @@ body {
     flex-shrink: 0;
     width: 100%;
     max-width: 1440px;
-}
-
-.aivh-header {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 882px;
-}
-
-.aivh-title {
-    font-family: 'Figtree', sans-serif;
-    font-weight: 500;
-    line-height: 1;
-    color: var(--text-primary);
-    font-size: 48px;
-    letter-spacing: -0.48px;
-    margin: 0;
-}
-
-.aivh-subtitle {
-    font-family: 'Figtree', sans-serif;
-    font-weight: 300;
-    line-height: 1.4;
-    color: var(--text-secondary);
-    font-size: 18px;
-    letter-spacing: -0.18px;
-    margin: 0;
-    max-width: 560px;
 }
 
 .aivh-frame {
@@ -2655,18 +2590,9 @@ body {
     .aivh {
         padding: 80px 0;
     }
-    .aivh-title {
-        font-size: 36px;
-    }
-    .aivh-subtitle {
-        font-size: 16px;
-    }
 }
 
 @media (max-width: 768px) {
-    .aivh-title {
-        font-size: 28px;
-    }
     .aivh-frame {
         border-radius: 16px;
     }
@@ -2678,11 +2604,5 @@ body {
     .aivh-tag {
         font-size: 11px;
         padding: 5px 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .aivh-title {
-        font-size: 22px;
     }
 }
