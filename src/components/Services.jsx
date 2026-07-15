@@ -50,46 +50,88 @@ export default function Services() {
   const totalCount = String(items.length).padStart(2, '0')
 
   const tabsRef = useRef(null)
-  const labelRefs = useRef({})
+  const isFirstRunRef = useRef(true)
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 })
 
-  const measureLabels = () => {
-    Object.entries(labelRefs.current).forEach(([, el]) => {
-      if (el) el.style.setProperty('--label-w', `${el.scrollWidth}px`)
-    })
-  }
-
-  useLayoutEffect(() => {
-    measureLabels()
-  }, [])
-
-  const measureIndicator = () => {
+  const computeGeometry = () => {
     const container = tabsRef.current
-    if (!container) return
-    const btn = container.querySelector('.services-tab.active')
-    if (!btn) return
-    setIndicatorStyle({
-      left: btn.offsetLeft,
-      width: btn.offsetWidth,
-      opacity: 1,
-    })
+    if (!container) return null
+    const buttons = Array.from(container.querySelectorAll('.services-tab'))
+    const activeIndex = buttons.findIndex((b) => b.classList.contains('active'))
+    if (activeIndex < 0) return null
+    const activeBtn = buttons[activeIndex]
+
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    if (!isMobile) {
+      return {
+        isMobile: false,
+        collapsedLeft: activeBtn.offsetLeft,
+        collapsedWidth: activeBtn.offsetWidth,
+        expandedLeft: activeBtn.offsetLeft,
+        expandedWidth: activeBtn.offsetWidth,
+      }
+    }
+
+    const containerStyles = getComputedStyle(container)
+    const gap = parseFloat(containerStyles.gap) || 0
+    const paddingLeft = parseFloat(containerStyles.paddingLeft) || 0
+
+    const btnStyles = getComputedStyle(activeBtn)
+    const paddL = parseFloat(btnStyles.paddingLeft) || 0
+    const paddR = parseFloat(btnStyles.paddingRight) || 0
+    const minW = parseFloat(btnStyles.minWidth) || 0
+    const iconEl = activeBtn.querySelector('svg')
+    const iconW = iconEl ? iconEl.getBoundingClientRect().width : 16
+    const iconOnlyWidth = Math.max(minW, paddL + paddR + iconW)
+
+    const label = activeBtn.querySelector('.services-tab-label')
+    const labelWidth = label ? label.scrollWidth : 0
+    const gapWhenActive = 8
+    const expandedWidth = paddL + paddR + iconW + gapWhenActive + labelWidth
+
+    const targetLeft = paddingLeft + activeIndex * (iconOnlyWidth + gap)
+
+    return {
+      isMobile: true,
+      collapsedLeft: targetLeft,
+      collapsedWidth: iconOnlyWidth,
+      expandedLeft: targetLeft,
+      expandedWidth,
+    }
   }
 
   useLayoutEffect(() => {
-    measureIndicator()
+    const geom = computeGeometry()
+    if (!geom) return
+
+    // Desktop, or first mount on mobile: snap directly to expanded state.
+    if (!geom.isMobile || isFirstRunRef.current) {
+      isFirstRunRef.current = false
+      setIndicatorStyle({ left: geom.expandedLeft, width: geom.expandedWidth, opacity: 1 })
+      return
+    }
+
+    // Mobile tab change — two-phase animation:
+    // Phase 1 (0-260ms): slide indicator to new tab's icon-only footprint.
+    //   Old label collapses in parallel; new label is held (CSS delay 260ms).
+    setIndicatorStyle({ left: geom.collapsedLeft, width: geom.collapsedWidth, opacity: 1 })
+
+    // Phase 2 (260-520ms): grow indicator width in sync with new label expanding.
+    const t = window.setTimeout(() => {
+      setIndicatorStyle({ left: geom.expandedLeft, width: geom.expandedWidth, opacity: 1 })
+    }, 260)
+
+    return () => window.clearTimeout(t)
   }, [activeId])
 
   useEffect(() => {
-    window.addEventListener('resize', measureIndicator)
-    return () => window.removeEventListener('resize', measureIndicator)
-  }, [])
-
-  useEffect(() => {
-    const container = tabsRef.current
-    if (!container || typeof ResizeObserver === 'undefined') return
-    const ro = new ResizeObserver(() => measureIndicator())
-    container.querySelectorAll('.services-tab').forEach((el) => ro.observe(el))
-    return () => ro.disconnect()
+    const onResize = () => {
+      const geom = computeGeometry()
+      if (!geom) return
+      setIndicatorStyle({ left: geom.expandedLeft, width: geom.expandedWidth, opacity: 1 })
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
   }, [])
 
   return (
@@ -118,12 +160,7 @@ export default function Services() {
                 onClick={() => setActiveId(id)}
               >
                 <TabIcon size={16} />
-                <span
-                  ref={(el) => { labelRefs.current[id] = el }}
-                  className="services-tab-label"
-                >
-                  {title}
-                </span>
+                <span className="services-tab-label">{title}</span>
               </button>
             )
           })}
