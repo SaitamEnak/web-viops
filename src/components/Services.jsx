@@ -50,7 +50,18 @@ export default function Services() {
   const totalCount = String(items.length).padStart(2, '0')
 
   const tabsRef = useRef(null)
+  const labelRefs = useRef({})
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 })
+
+  const measureLabels = () => {
+    Object.entries(labelRefs.current).forEach(([, el]) => {
+      if (el) el.style.setProperty('--label-w', `${el.scrollWidth}px`)
+    })
+  }
+
+  useLayoutEffect(() => {
+    measureLabels()
+  }, [])
 
   const measureIndicator = () => {
     const container = tabsRef.current
@@ -71,6 +82,14 @@ export default function Services() {
   useEffect(() => {
     window.addEventListener('resize', measureIndicator)
     return () => window.removeEventListener('resize', measureIndicator)
+  }, [])
+
+  useEffect(() => {
+    const container = tabsRef.current
+    if (!container || typeof ResizeObserver === 'undefined') return
+    const ro = new ResizeObserver(() => measureIndicator())
+    container.querySelectorAll('.services-tab').forEach((el) => ro.observe(el))
+    return () => ro.disconnect()
   }, [])
 
   return (
@@ -99,7 +118,12 @@ export default function Services() {
                 onClick={() => setActiveId(id)}
               >
                 <TabIcon size={16} />
-                <span>{title}</span>
+                <span
+                  ref={(el) => { labelRefs.current[id] = el }}
+                  className="services-tab-label"
+                >
+                  {title}
+                </span>
               </button>
             )
           })}
