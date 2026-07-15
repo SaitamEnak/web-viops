@@ -27,6 +27,19 @@ export default function Nav({ isDark, toggleTheme }) {
     return () => document.removeEventListener('click', handleClick)
   }, [isOpen])
 
+  useEffect(() => {
+    const prev = document.body.style.overflow
+    document.body.style.overflow = isOpen ? 'hidden' : prev || ''
+    return () => { document.body.style.overflow = prev || '' }
+  }, [isOpen])
+
+  useEffect(() => {
+    if (!isOpen) return
+    const handleKey = (e) => { if (e.key === 'Escape') setIsOpen(false) }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [isOpen])
+
   return (
     <nav className="top-nav">
       <img className="nav-logo" src={`${import.meta.env.BASE_URL}logo header.svg`} alt="Ovus" />
