@@ -3,15 +3,26 @@ import { useReveal } from '../hooks/useReveal'
 const BASE = import.meta.env.BASE_URL
 
 const ORBIT_IMAGES = [
-  `${BASE}imgs/slider/Emprepedia01.png`,
-  `${BASE}imgs/slider/Freelance01.png`,
-  `${BASE}imgs/slider/JohannaOtranto01.png`,
-  `${BASE}imgs/slider/redim01.png`,
-  `${BASE}imgs/slider/sinner01.png`,
-  `${BASE}imgs/slider/Viops01.png`,
-  `${BASE}imgs/slider/Freelance03.png`,
-  `${BASE}imgs/slider/sinner04.png`,
+  `${BASE}imgs/slider/01.png`,
+  `${BASE}imgs/slider/02.png`,
+  `${BASE}imgs/slider/03.png`,
+  `${BASE}imgs/slider/04.png`,
+  `${BASE}imgs/slider/05.png`,
+  `${BASE}imgs/slider/06.png`,
+  `${BASE}imgs/slider/07.png`,
+  `${BASE}imgs/slider/08.png`,
+  `${BASE}imgs/slider/09.png`,
+  `${BASE}imgs/slider/10.png`,
 ]
+
+function scrollToContact() {
+  const target = document.getElementById('contact')
+  if (!target) return
+  const rect = target.getBoundingClientRect()
+  const absoluteTop = rect.top + window.scrollY
+  const top = absoluteTop - (window.innerHeight - rect.height) / 2
+  window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+}
 
 export default function Hero() {
   const ref = useReveal()
@@ -48,8 +59,8 @@ export default function Hero() {
             <p className="hero-title">Creemos en el diseño<br />que logra objetivos.</p>
             <p className="hero-subtitle">Cada decisión visual existe para guiar, persuadir y convertir.</p>
           </div>
-          <div className="hero-button">
-            <p>Contáctanos</p>
+          <div className="hero-button" onClick={scrollToContact} style={{ cursor: 'pointer' }}>
+            <p>Solicitar presupuesto</p>
           </div>
         </div>
       </div>
