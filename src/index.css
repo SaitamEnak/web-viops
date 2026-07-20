@@ -934,8 +934,14 @@ body {
     max-width: 360px;
     justify-self: center;
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px dashed rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+}
+
+.resources-mockup-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .resources-badge {

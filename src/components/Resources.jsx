@@ -53,7 +53,7 @@ export default function Resources() {
         </div>
 
         <div className="resources-mockup" aria-hidden="true">
-          {/* Espacio reservado para mockup del ebook */}
+          <img src={`${import.meta.env.BASE_URL}imgs/bookmock.png`} alt="" className="resources-mockup-img" />
         </div>
       </div>
     </div>
